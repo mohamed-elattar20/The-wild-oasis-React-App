@@ -17,7 +17,7 @@ import { useEditCabin } from "./useEditCabin";
 
 //
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, setIsOpenModal }) {
   const { id: editId, ...editValue } = cabinToEdit;
   const isEditSession = Boolean(editId);
 
@@ -48,14 +48,20 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       editCabin(
         { newCabinData: { ...data, image: image }, id: editId },
         {
-          onSuccess: () => reset(),
+          onSuccess: () => {
+            reset();
+            setIsOpenModal?.((prev) => !prev);
+          },
         }
       );
     } else {
       createCabin(
         { ...data, image: image },
         {
-          onSuccess: (data) => reset(),
+          onSuccess: (data) => {
+            reset();
+            setIsOpenModal?.((prev) => !prev);
+          },
         }
       );
     }
@@ -64,7 +70,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     // console.log(errors);
   };
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form
+      type={setIsOpenModal ? "modal" : "regular"}
+      onSubmit={handleSubmit(onSubmit, onError)}
+    >
       <FormRow label={`Cabin name`} error={errors?.name?.message}>
         <Input
           {...register("name", { required: "This Field Is Req" })}
@@ -139,7 +148,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          onClick={() => setIsOpenModal?.((prev) => !prev)}
+          variation="secondary"
+          type="reset"
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
