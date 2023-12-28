@@ -41,7 +41,7 @@ const Filter = ({ filterField, options }) => {
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
 
   const handleClick = (value) => {
-    searchParams.set("discount", value);
+    searchParams.set(filterField, value);
     setSearchParams(searchParams);
   };
   return (
@@ -52,6 +52,7 @@ const Filter = ({ filterField, options }) => {
             key={option.value}
             onClick={() => handleClick(option.value)}
             active={option.value === currentFilter}
+            disabled={option.value === currentFilter}
           >
             {option.label}
           </FilterButton>

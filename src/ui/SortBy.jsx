@@ -1,8 +1,23 @@
+import { useSearchParams } from "react-router-dom";
+import Select from "./Select";
+
 //
 const SortBy = ({ options }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const sortBy = searchParams.get("sortBy") || "";
+  const handleChange = (e) => {
+    searchParams.set("sortBy", e.target.value);
+    setSearchParams(searchParams);
+  };
   return (
     <>
-      <h1>Sort</h1>
+      <Select
+        value={sortBy}
+        options={options}
+        type="white"
+        onChange={handleChange}
+      />
     </>
   );
 };
