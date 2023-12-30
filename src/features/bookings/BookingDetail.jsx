@@ -77,7 +77,7 @@ function BookingDetail() {
         )}
 
         <Modal>
-          <Modal.Open>
+          <Modal.Open opens={`delete`}>
             <Button variation="danger">Delete Booking </Button>
           </Modal.Open>
           <Modal.Window name={`delete`}>
