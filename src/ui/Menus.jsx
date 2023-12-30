@@ -95,7 +95,7 @@ const Toggle = ({ id }) => {
       x: window.innerWidth - rect.width - rect.x,
       y: rect.y + rect.height + 8,
     });
-    openId = "" || openId !== id ? open(id) : close();
+    openId === "" || openId !== id ? open(id) : close();
   };
   return (
     <StyledToggle onClick={handleClick}>
