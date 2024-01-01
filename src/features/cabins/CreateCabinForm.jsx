@@ -6,11 +6,7 @@ import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 // React Hook Form
 import { useForm } from "react-hook-form";
-// React Query
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditCabin } from "../../services/apiCabins";
-// React Hot Toast
-import { toast } from "react-hot-toast";
+
 import FormRow from "../../ui/FormRow";
 import { useCretateCabin } from "./useCretateCabin";
 import { useEditCabin } from "./useEditCabin";
@@ -19,6 +15,7 @@ import { useEditCabin } from "./useEditCabin";
 
 function CreateCabinForm({ cabinToEdit = {}, setIsOpenModal }) {
   const { id: editId, ...editValue } = cabinToEdit;
+
   const isEditSession = Boolean(editId);
 
   const {
@@ -59,6 +56,7 @@ function CreateCabinForm({ cabinToEdit = {}, setIsOpenModal }) {
         { ...data, image: image },
         {
           onSuccess: (data) => {
+            // console.log(data);
             reset();
             setIsOpenModal?.((prev) => !prev);
           },

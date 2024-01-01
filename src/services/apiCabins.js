@@ -22,6 +22,7 @@ export const deleteCabin = async (id) => {
 
   return data;
 };
+
 export const createEditCabin = async (newCabin, id) => {
   const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
 

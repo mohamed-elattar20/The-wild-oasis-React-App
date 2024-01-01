@@ -4,29 +4,33 @@ import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
-import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
+// React-Router-dom
+import { useSearchParams } from "react-router-dom";
 
 const CabinTable = () => {
   const { cabins, isLoading, error } = useCabins();
   const [searchParams] = useSearchParams();
   const filterValue = searchParams.get("discount") || "all";
+  // console.log(`Re-Render From Cabin Table ( discount )`);
 
   //  Filtering
   let filterdCabins;
 
+  // Switch Statement Here May be better in performance
   if (filterValue === "all") filterdCabins = cabins;
   if (filterValue === "no-discount")
-    filterdCabins = cabins.filter((cabin) => cabin.discount === 0);
+    filterdCabins = cabins?.filter((cabin) => cabin.discount === 0);
   if (filterValue === "with-discount")
-    filterdCabins = cabins.filter((cabin) => cabin.discount > 0);
+    filterdCabins = cabins?.filter((cabin) => cabin.discount > 0);
+
   if (error) return <h1>Error</h1>;
   if (isLoading) return <Spinner />;
   if (!cabins.length) return <Empty resourceName="bookings" />;
 
   // Sorting
-
   const sortBy = searchParams.get("sortBy") || "startDate-asc";
+  // console.log(`Re-Render From Cabin Table ( sortBy )`);
 
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
@@ -49,7 +53,7 @@ const CabinTable = () => {
 
           <Table.Body
             // data={cabins}
-            data={filterdCabins}
+            data={sortedCabins}
             render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
           />
         </Table>

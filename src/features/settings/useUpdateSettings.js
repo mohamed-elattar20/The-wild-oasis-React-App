@@ -9,7 +9,7 @@ export const useUpdateSettings = () => {
     mutationFn: updateSettingsApi,
     onSuccess: () => {
       toast.success(`Settings Updated Successfully `);
-      queryClient.invalidateQueries({ queryKey: ["Settings "] });
+      queryClient.invalidateQueries({ queryKey: ["settings"] });
     },
     onError: (err) => toast.error(err.message),
   });

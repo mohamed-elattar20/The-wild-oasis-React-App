@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // Pages
 import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
@@ -11,8 +10,9 @@ import PageNotFound from "./pages/PageNotFound";
 import GlobalStyles from "./styles/GlobalStyles";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
-// React-Query-devTools
+// React-Query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // React-Hot-Toast
 import { Toaster } from "react-hot-toast";
 import Booking from "./pages/Booking";
@@ -20,6 +20,7 @@ import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { DarkModeProvider } from "./context/DarkModeContext";
 const App = () => {
+  //
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {

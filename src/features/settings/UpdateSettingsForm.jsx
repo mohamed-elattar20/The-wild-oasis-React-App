@@ -20,7 +20,9 @@ function UpdateSettingsForm() {
   const { isUpdating, updateSettings } = useUpdateSettings();
 
   const handleUpdate = (e, fieldName) => {
+    // console.log(e.target);
     const { value } = e.target;
+    // console.log(value);
     if (!value) return;
     updateSettings({ [fieldName]: value });
   };

@@ -42,6 +42,7 @@ const Filter = ({ filterField, options }) => {
 
   const handleClick = (value) => {
     searchParams.set(filterField, value);
+    // console.log(searchParams.get("discount"));
 
     if (searchParams.get("page")) {
       searchParams.set("page", 1);
@@ -49,6 +50,7 @@ const Filter = ({ filterField, options }) => {
 
     setSearchParams(searchParams);
   };
+
   return (
     <>
       <StyledFilter>
