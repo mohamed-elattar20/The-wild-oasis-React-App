@@ -8,7 +8,7 @@ import Textarea from "../../ui/Textarea";
 import { useForm } from "react-hook-form";
 
 import FormRow from "../../ui/FormRow";
-import { useCretateCabin } from "./useCretateCabin";
+import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
 
 //
@@ -28,7 +28,7 @@ function CreateCabinForm({ cabinToEdit = {}, setIsOpenModal }) {
     defaultValues: isEditSession ? editValue : {},
   });
 
-  const { isCreating, createCabin } = useCretateCabin();
+  const { isCreating, createCabin } = useCreateCabin();
   //
 
   const { isEditing, editCabin } = useEditCabin();

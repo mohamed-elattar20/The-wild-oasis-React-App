@@ -30,7 +30,8 @@ export const useBookings = () => {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["bookings", filterObj, sortBy, page], // Whenever This FilterObj Changes It Will Re-Fetch The Data
+    queryKey: ["bookings", filterObj, sortBy, page], // Whenever ( FilterObj or sortBy or page ) Changes
+    //  It Will Re-Fetch The Data
     queryFn: () => getBookings({ filterObj, sortBy, page }),
   });
 

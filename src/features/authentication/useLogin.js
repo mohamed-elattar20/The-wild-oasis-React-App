@@ -10,6 +10,7 @@ export const useLogin = () => {
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
       //   console.log(data);
+      // queryClient.invalidateQueries({ queryKey: ["user"] });
       queryClient.setQueryData(["user"], user.user);
       navigate(`/dashboard`, { replace: true });
     },

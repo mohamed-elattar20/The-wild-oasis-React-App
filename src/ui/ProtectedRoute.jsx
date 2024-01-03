@@ -14,7 +14,7 @@ const FullPage = styled.div`
 //
 const ProtectedRoute = ({ children }) => {
   //  1. Load the Authenticated User
-  const { error, isLoading, user, isAuthenticated } = useUser();
+  const { isLoading, isAuthenticated } = useUser();
   const navigate = useNavigate(); // We Can't Call This navigate Function in the top level
   //    (We Use it in a Call Back or useEffect or in an EventListner)
 

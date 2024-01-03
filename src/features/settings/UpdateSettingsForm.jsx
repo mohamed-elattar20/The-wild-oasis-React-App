@@ -29,6 +29,7 @@ function UpdateSettingsForm() {
 
   if (isLoading) return <Spinner />;
   if (error) return <h1>Error</h1>;
+
   return (
     <Form>
       <FormRow label="Minimum nights/booking">
