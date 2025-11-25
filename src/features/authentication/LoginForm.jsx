@@ -9,7 +9,7 @@ import { useLogin } from "./useLogin";
 
 function LoginForm() {
   const [email, setEmail] = useState("jonas@example.com");
-  const [password, setPassword] = useState("mohamed");
+  const [password, setPassword] = useState("pass0987");
 
   const { isLogging, login } = useLogin();
 
